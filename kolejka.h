@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef MYSTRUCT_H
-#define MYSTRUCT_H
+#ifndef KOLEJKA_H
+#define KOLEJKA_H
 
 #include<iostream>
 #include<string>
