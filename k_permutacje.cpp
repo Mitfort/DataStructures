@@ -12,9 +12,9 @@ ostringstream nullStream;
 ostream& debug = nullStream;
 #endif
 
-void k_permutacji(const int n, const char* S[], const int k);
-void permutuj(int left, int right, const char*S[],const int k,int counter);
-const char** zamien(int left, int i,const char*S[]);
+void k_permutacji(const int n, char* S, const int k);
+void permutuj(int left, int right,  char*S,const int k,int counter);
+char* zamien(int left, int i,char*S);
 
 int silnia(int n)
 {
@@ -23,11 +23,11 @@ int silnia(int n)
 	return n * silnia(n - 1);
 }
 
-int main()
+int main(int argc,char*argv[])
 {
-	const int n = 5; //N-elementów
-	const char* S[] = {"a","b","c","d","e"}; //ZBIOR
-	const int k = 2; //K-permutacje
+	const int n = atoi(argv[1]); //N_liczb
+	char* S = argv[2];
+	const int k = atoi(argv[3]); //K-permutacje
 
 	const int ile_permutacji = silnia(n) / silnia(n-k);
 
@@ -38,12 +38,12 @@ int main()
 	return 0;
 }
 
-void k_permutacji(const int n, const char* S[], const int k)
+void k_permutacji(const int n, char* S, const int k)
 {
 	permutuj(0, n - 1,S,k,0);
 }
 
-void permutuj(int left, int right, const char* S[], const int k,int counter)
+void permutuj(int left, int right, char* S, const int k,int counter)
 {
 	if (counter == k)
 	{
@@ -74,9 +74,9 @@ void permutuj(int left, int right, const char* S[], const int k,int counter)
 
 }
 
-const char** zamien(int left, int i,const char*S[])
+char* zamien(int left, int i,char*S)
 {
-	const char* help = S[left];
+	char help = S[left];
 	S[left] = S[i];
 	S[i] = help;
 
